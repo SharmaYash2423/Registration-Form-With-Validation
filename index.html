@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Vault Registration</title>
+    <link rel="shortcut icon" href="./gamevault.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- <style>
+        body {
+            background-image: url("https://www.shutterstock.com/image-photo/blur-image-arcade-machine-game-600nw-2171497587.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background-color: black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 440px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper .form-box {
+            width: 100%;
+            padding: 40px;
+        }
+
+        .form-box h1 {
+            font-size: 2em;
+            color: black;
+            text-align: center;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid black;
+            margin: 30px 0;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: white;
+            font-weight: 600;
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: black;
+            line-height: 57px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: white;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: black;
+            color: white;
+        }
+    </style> -->
+</head>
+
+<body class="bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('https://www.shutterstock.com/image-photo/blur-image-arcade-machine-game-600nw-2171497587.jpg');">
+
+    <header>
+        <nav class="bg-black fixed top-0 w-full z-50">
+            <div class="container mx-auto flex items-center justify-between p-4">
+                <a class="flex items-center" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="90" height="90">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="white" stroke-width="5" />
+                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial, sans-serif"
+                            font-size="100" font-style="italic" font-weight="bold" dx="-0.2em" dy="0.3em">
+                            G
+                        </text>
+                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial, sans-serif"
+                            font-size="80" font-style="italic" font-weight="bold" dx="0.3em" dy="0.6em">
+                            V
+                        </text>
+                        <line x1="50" y1="150" x2="150" y2="150" stroke="white" stroke-width="2" />
+                        <line x1="50" y1="50" x2="150" y2="50" stroke="white" stroke-width="2" />
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="white" stroke-width="2"
+                            stroke-dasharray="5,5" />
+                    </svg>
+                </a>
+
+                <a class="text-white text-center text-lg font-semibold" href="index.html">Gaming Vault Login Form</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white bg-opacity-10 border-2 border-white border-opacity-50 rounded-2xl backdrop-blur-lg shadow-xl p-10 w-96">
+            <h1 class="text-2xl font-bold text-black text-center mb-6">Login</h1>
+            <form action="./login/index.html" onsubmit="return validateForm()">
+                <div class="relative mb-6">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-black text-xl">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </span>
+                    <input type="text" id="gamerId" name="gamerId" required maxlength="9"
+                        class="w-full h-12 px-3 bg-transparent border-b-2 border-black text-white font-semibold focus:outline-none focus:border-green-500 peer"
+                        placeholder=" " />
+                    <label
+                        class="absolute left-2 top-1/3 transform -translate-y-full text-black text-sm font-medium transition-all duration-300 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-placeholder-shown:translate-y-[-50%] peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-full">Gamer
+                        ID (9-digit number)</label>
+                </div>
+                <div class="relative mb-6">
+                    <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-black text-xl">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <input type="email" id="gamerEmail" name="gamerEmail" required
+                        class="w-full h-12 px-3 bg-transparent border-b-2 border-black text-white font-semibold focus:outline-none focus:border-green-500 peer"
+                        placeholder=" " />
+                    <label
+                        class="absolute left-2 top-1/3 transform -translate-y-full text-black text-sm font-medium transition-all duration-300 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-placeholder-shown:translate-y-[-50%] peer-focus:top-0 peer-focus:text-xs peer-focus:-translate-y-full">Gamer
+                        Email</label>
+                </div>
+                <button id="responsiveButton" type="submit"
+                    class="w-full h-12 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white transition-colors duration-300">Login</button>
+            </form>
+            <div class="mt-4">
+                <button class="w-full h-12 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white transition-colors duration-300" onclick="window.location.href='registration.html'">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const gamerId = document.getElementById('gamerId').value;
+            const gamerEmail = document.getElementById('gamerEmail').value;
+
+            if (!/^\d{9}$/.test(gamerId)) {
+                alert('Gamer ID must be a 9-digit number.');
+                return false;
+            }
+
+            if (!gamerEmail.includes('@') || !gamerEmail.includes('.')) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

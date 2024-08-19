@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Vault Registration</title>
+    <link rel="shortcut icon" href="./gamevault.png" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-image: url("https://www.shutterstock.com/image-photo/blur-image-arcade-machine-game-600nw-2171497587.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background-color: black;
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 800px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper .form-box {
+            width: 100%;
+            padding: 40px;
+        }
+
+        .form-box h1 {
+            font-size: 2em;
+            color: black;
+            text-align: center;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid black;
+            margin: 30px 0;
+            margin-bottom: 75px;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: white;
+            font-weight: 600;
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: black;
+            line-height: 57px;
+        }
+
+        .input-box input[type="date"],
+        .input-box select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid black;
+            color: black;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: white;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="90" height="90">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="white" stroke-width="5" />
+                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial, sans-serif"
+                            font-size="100" font-style="italic" font-weight="bold" dx="-0.2em" dy="0.3em">
+                            G
+                        </text>
+                        <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial, sans-serif"
+                            font-size="80" font-style="italic" font-weight="bold" dx="0.3em" dy="0.6em">
+                            V
+                        </text>
+                        <line x1="50" y1="150" x2="150" y2="150" stroke="white" stroke-width="2" />
+                        <line x1="50" y1="50" x2="150" y2="50" stroke="white" stroke-width="2" />
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="white" stroke-width="2"
+                            stroke-dasharray="5,5" />
+                    </svg>
+                </a>
+
+                <a class="navbar-brand mx-auto text-center" href="registration.html">Gaming Vault Registration Form</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <div class="form-box login">
+            <h1>Register</h1>
+            <form onsubmit="return validateForm(event)">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text" id="username" name="username" required maxlength="50"
+                        oninput="validateUsername()">
+                    <label>Username (min. 3 characters)</label>
+                    <span class="feedback" id="usernameFeedback"></span>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" id="email" name="email" required oninput="validateEmail()">
+                    <label>Email</label>
+                    <span class="feedback" id="emailFeedback"></span>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" id="userPassword" name="userPassword" required oninput="validatePassword()">
+                    <label>Password (min. 8 characters, letters & numbers)</label>
+                    <span class="feedback" id="passwordFeedback"></span>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-open-outline"></ion-icon></span>
+                    <input type="password" id="confirmUserPassword" name="confirmUserPassword" required
+                        oninput="validateConfirmPassword()">
+                    <label>Confirm Password</label>
+                    <span class="feedback" id="confirmPasswordFeedback"></span>
+                </div>
+                <div class="input-box">
+                    <input type="date" id="dob" name="dob" required oninput="validateDOB()">
+                    <span class="feedback" id="dobFeedback"></span>
+                </div>
+                <button id="submitButton" type="submit" class="btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Registration Successful</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    You have successfully registered!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateUsername() {
+            const usernameInput = document.getElementById('username');
+            const feedback = document.getElementById('usernameFeedback');
+            if (/^[a-zA-Z ]{3,}$/.test(usernameInput.value)) {
+                feedback.textContent = '✅';
+                feedback.style.color = 'green';
+                usernameInput.style.borderBottom = '4px solid green';
+            } else {
+                feedback.textContent = '❌ Username must be at least 3 characters long and contain only letters and spaces.';
+                feedback.style.color = 'red';
+                usernameInput.style.borderBottom = '4px solid red';
+            }
+        }
+
+        function validateEmail() {
+            const emailInput = document.getElementById('email');
+            const feedback = document.getElementById('emailFeedback');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (emailPattern.test(emailInput.value)) {
+                feedback.textContent = '✅';
+                feedback.style.color = 'green';
+                emailInput.style.borderBottom = '4px solid green';
+            } else {
+                feedback.textContent = '❌ Please enter a valid email address.';
+                feedback.style.color = 'red';
+                emailInput.style.borderBottom = '4px solid red';
+            }
+        }
+
+        function validatePassword() {
+            const passwordInput = document.getElementById('userPassword');
+            const feedback = document.getElementById('passwordFeedback');
+            if (passwordInput.value.length >= 8 && /[a-zA-Z]/.test(passwordInput.value) && /\d/.test(passwordInput.value)) {
+                feedback.textContent = '✅';
+                feedback.style.color = 'green';
+                passwordInput.style.borderBottom = '4px solid green';
+            } else {
+                feedback.textContent = '❌ Password must be at least 8 characters long and contain both letters and numbers.';
+                feedback.style.color = 'red';
+                passwordInput.style.borderBottom = '4px solid red';
+            }
+        }
+
+        function validateConfirmPassword() {
+            const passwordInput = document.getElementById('userPassword');
+            const confirmPasswordInput = document.getElementById('confirmUserPassword');
+            const feedback = document.getElementById('confirmPasswordFeedback');
+            if (passwordInput.value === confirmPasswordInput.value) {
+                feedback.textContent = '✅';
+                feedback.style.color = 'green';
+                confirmPasswordInput.style.borderBottom = '4px solid green';
+            } else {
+                feedback.textContent = '❌ Passwords do not match.';
+                feedback.style.color = 'red';
+                confirmPasswordInput.style.borderBottom = '4px solid red';
+            }
+        }
+
+        function validateDOB() {
+            const dobInput = document.getElementById('dob');
+            const feedback = document.getElementById('dobFeedback');
+            const dobDate = new Date(dobInput.value);
+            const today = new Date();
+            let age = today.getFullYear() - dobDate.getFullYear();
+            const monthDiff = today.getMonth() - dobDate.getMonth();
+            const dayDiff = today.getDate() - dobDate.getDate();
+
+            if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                age--;
+            }
+
+            if (age >= 18) {
+                feedback.textContent = '✅';
+                feedback.style.color = 'green';
+                dobInput.style.borderBottom = '4px solid green';
+            } else {
+                feedback.textContent = '❌ You must be at least 18 years old.';
+                feedback.style.color = 'red';
+                dobInput.style.borderBottom = '4px solid red';
+            }
+
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = age < 18;
+        }
+
+        function validateForm(event) {
+            validateUsername();
+            validateEmail();
+            validatePassword();
+            validateConfirmPassword();
+            validateDOB();
+
+            const feedbacks = document.getElementsByClassName('feedback');
+            for (let feedback of feedbacks) {
+                if (feedback.style.color === 'red') {
+                    return false;
+                }
+            }
+
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+
+            return false;
+        }
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
