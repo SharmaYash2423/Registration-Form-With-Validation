@@ -12,134 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
-    <style>
-        body {
-            background-image: url("https://www.shutterstock.com/image-photo/blur-image-arcade-machine-game-600nw-2171497587.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .navbar {
-            background-color: black;
-            position: relative;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .wrapper {
-            position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 800px;
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, .5);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .wrapper .form-box {
-            width: 100%;
-            padding: 40px;
-        }
-
-        .form-box h1 {
-            font-size: 2em;
-            color: black;
-            text-align: center;
-        }
-
-        .input-box {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            border-bottom: 2px solid black;
-            margin: 30px 0;
-            margin-bottom: 75px;
-        }
-
-        .input-box label {
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            font-size: 1em;
-            color: black;
-            font-weight: 500;
-            pointer-events: none;
-            transition: .5s;
-        }
-
-        .input-box input:focus~label,
-        .input-box input:valid~label {
-            top: -5px;
-        }
-
-        .input-box input {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 1em;
-            color: white;
-            font-weight: 600;
-            padding: 0 35px 0 5px;
-        }
-
-        .input-box .icon {
-            position: absolute;
-            right: 8px;
-            font-size: 1.2em;
-            color: black;
-            line-height: 57px;
-        }
-
-        .input-box input[type="date"],
-        .input-box select {
-            width: 100%;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid black;
-            color: black;
-        }
-
-        .btn {
-            width: 100%;
-            height: 45px;
-            background: white;
-            border: none;
-            outline: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            color: black;
-            font-weight: 500;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .btn:hover {
-            background: black;
-            color: white;
-        }
-    </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            input::placeholder {
+                color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
 </head>
 
-<body>
+<body class="bg-cover bg-center bg-no-repeat bg-fixed" style="background-image: url('https://www.shutterstock.com/image-photo/blur-image-arcade-machine-game-600nw-2171497587.jpg');">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+        <nav class="bg-black top-0 w-full z-50">
+            <div class="container mx-auto flex items-center justify-between p-4">
+                <a class="flex items-center" href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="90" height="90">
                         <circle cx="100" cy="100" r="95" fill="none" stroke="white" stroke-width="5" />
                         <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial, sans-serif"
@@ -157,50 +43,55 @@
                     </svg>
                 </a>
 
-                <a class="navbar-brand mx-auto text-center" href="registration.html">Gaming Vault Registration Form</a>
+                <a class="text-white text-center text-lg font-semibold" href="index.html">Gaming Vault Registration Form</a>
             </div>
         </nav>
     </header>
-
-    <div class="wrapper">
-        <div class="form-box login">
-            <h1>Register</h1>
-            <form onsubmit="return validateForm(event)">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
-                    <input type="text" id="username" name="username" required maxlength="50"
-                        oninput="validateUsername()">
-                    <label>Username (min. 3 characters)</label>
-                    <span class="feedback" id="usernameFeedback"></span>
+    
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white bg-opacity-10 border-2 border-white border-opacity-50 rounded-2xl backdrop-blur-lg shadow-xl p-10 w-96">
+            <h2 class="text-center text-2xl font-bold text-black mb-6">Register</h2>
+            <form onsubmit="return validateForm(event);">
+                <div class="mb-6">
+                    <label for="username" class="block text-black font-medium mb-2">Username (min. 3 characters)</label>
+                    <div class="flex items-center border-b border-black pb-2">
+                        <input type="text" id="username" class="flex-1 bg-transparent border-none focus:outline-none text-black placeholder-opacity-70" placeholder="Username" oninput="validateUsername();">
+                        <span id="usernameFeedback" class="icon ml-2"></span>
+                    </div>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" id="email" name="email" required oninput="validateEmail()">
-                    <label>Email</label>
-                    <span class="feedback" id="emailFeedback"></span>
+                <div class="mb-6">
+                    <label for="email" class="block text-black font-medium mb-2">Email</label>
+                    <div class="flex items-center border-b border-black pb-2">
+                        <input type="email" id="email" class="flex-1 bg-transparent border-none focus:outline-none text-black placeholder-opacity-70" placeholder="Email" oninput="validateEmail();">
+                        <span id="emailFeedback" class="icon ml-2"></span>
+                    </div>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" id="userPassword" name="userPassword" required oninput="validatePassword()">
-                    <label>Password (min. 8 characters, letters & numbers)</label>
-                    <span class="feedback" id="passwordFeedback"></span>
+                <div class="mb-6">
+                    <label for="password" class="block text-black font-medium mb-2">Password (min. 8 characters, letters & numbers)</label>
+                    <div class="flex items-center border-b border-black pb-2">
+                        <input type="password" id="password" class="flex-1 bg-transparent border-none focus:outline-none text-black placeholder-opacity-70" placeholder="Password" oninput="validatePassword();">
+                        <span id="passwordFeedback" class="icon ml-2"></span>
+                    </div>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-open-outline"></ion-icon></span>
-                    <input type="password" id="confirmUserPassword" name="confirmUserPassword" required
-                        oninput="validateConfirmPassword()">
-                    <label>Confirm Password</label>
-                    <span class="feedback" id="confirmPasswordFeedback"></span>
+                <div class="mb-6">
+                    <label for="confirm_password" class="block text-black font-medium mb-2">Confirm Password</label>
+                    <div class="flex items-center border-b border-black pb-2">
+                        <input type="password" id="confirm_password" class="flex-1 bg-transparent border-none focus:outline-none text-black placeholder-opacity-70" placeholder="Confirm Password" oninput="validateConfirmPassword();">
+                        <span id="confirmPasswordFeedback" class="icon ml-2"></span>
+                    </div>
                 </div>
-                <div class="input-box">
-                    <input type="date" id="dob" name="dob" required oninput="validateDOB()">
-                    <span class="feedback" id="dobFeedback"></span>
+                <div class="mb-6">
+                    <label for="dob" class="block text-black font-medium mb-2">Date of Birth</label>
+                    <div class="flex items-center border border-black rounded-lg">
+                        <input type="date" id="dob" class="flex-1 bg-transparent border-none focus:outline-none text-black placeholder-opacity-70 px-2 py-1" placeholder="dd-mm-yyyy" onchange="validateDOB();">
+                        <span id="dobFeedback" class="icon ml-2"></span>
+                    </div>
                 </div>
-                <button id="submitButton" type="submit" class="btn">Register</button>
+                <button id="submitButton" type="submit" class="w-full h-12 bg-white text-black font-semibold rounded-lg hover:bg-black hover:text-white transition-colors duration-300">Register</button>
             </form>
         </div>
     </div>
-
+    
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -217,7 +108,7 @@
             </div>
         </div>
     </div>
-
+    
     <script>
         function validateUsername() {
             const usernameInput = document.getElementById('username');
@@ -232,7 +123,7 @@
                 usernameInput.style.borderBottom = '4px solid red';
             }
         }
-
+    
         function validateEmail() {
             const emailInput = document.getElementById('email');
             const feedback = document.getElementById('emailFeedback');
@@ -247,9 +138,9 @@
                 emailInput.style.borderBottom = '4px solid red';
             }
         }
-
+    
         function validatePassword() {
-            const passwordInput = document.getElementById('userPassword');
+            const passwordInput = document.getElementById('password');
             const feedback = document.getElementById('passwordFeedback');
             if (passwordInput.value.length >= 8 && /[a-zA-Z]/.test(passwordInput.value) && /\d/.test(passwordInput.value)) {
                 feedback.textContent = '✅';
@@ -261,10 +152,10 @@
                 passwordInput.style.borderBottom = '4px solid red';
             }
         }
-
+    
         function validateConfirmPassword() {
-            const passwordInput = document.getElementById('userPassword');
-            const confirmPasswordInput = document.getElementById('confirmUserPassword');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
             const feedback = document.getElementById('confirmPasswordFeedback');
             if (passwordInput.value === confirmPasswordInput.value) {
                 feedback.textContent = '✅';
@@ -276,7 +167,7 @@
                 confirmPasswordInput.style.borderBottom = '4px solid red';
             }
         }
-
+    
         function validateDOB() {
             const dobInput = document.getElementById('dob');
             const feedback = document.getElementById('dobFeedback');
@@ -285,11 +176,11 @@
             let age = today.getFullYear() - dobDate.getFullYear();
             const monthDiff = today.getMonth() - dobDate.getMonth();
             const dayDiff = today.getDate() - dobDate.getDate();
-
+    
             if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
                 age--;
             }
-
+    
             if (age >= 18) {
                 feedback.textContent = '✅';
                 feedback.style.color = 'green';
@@ -299,31 +190,33 @@
                 feedback.style.color = 'red';
                 dobInput.style.borderBottom = '4px solid red';
             }
-
+    
             const submitButton = document.getElementById('submitButton');
             submitButton.disabled = age < 18;
         }
-
+    
         function validateForm(event) {
             validateUsername();
             validateEmail();
             validatePassword();
             validateConfirmPassword();
             validateDOB();
-
-            const feedbacks = document.getElementsByClassName('feedback');
+    
+            const feedbacks = document.querySelectorAll('.icon');
             for (let feedback of feedbacks) {
                 if (feedback.style.color === 'red') {
+                    event.preventDefault();
                     return false;
                 }
             }
-
+    
             const successModal = new bootstrap.Modal(document.getElementById('successModal'));
             successModal.show();
-
+    
+            event.preventDefault();
             return false;
-        }
-    </script>
+        }        
+    </script>    
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
